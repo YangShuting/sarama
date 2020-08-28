@@ -10,7 +10,7 @@ import (
 	"sync"
 	"syscall"
 
-	"github.com/Shopify/sarama"
+	"github.com/Yangshuting/sarama"
 )
 
 // Sarama configuration options

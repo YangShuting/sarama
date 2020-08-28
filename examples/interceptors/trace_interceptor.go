@@ -4,7 +4,7 @@ import (
 	"context"
 	"strings"
 
-	"github.com/Shopify/sarama"
+	"github.com/Yangshuting/sarama"
 	"go.opentelemetry.io/otel/api/global"
 	"go.opentelemetry.io/otel/api/kv"
 	"go.opentelemetry.io/otel/api/trace"
