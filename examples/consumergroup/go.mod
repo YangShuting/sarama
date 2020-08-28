@@ -1,7 +1,7 @@
-module github.com/Shopify/sarama/examples/consumer
+module github.com/Yangshuting/sarama/examples/consumer
 
 go 1.14
 
-replace github.com/Shopify/sarama => ../../
+replace github.com/Yangshuting/sarama => ../../
 
-require github.com/Shopify/sarama v1.27.0
+require github.com/Yangshuting/sarama v1.27.0
