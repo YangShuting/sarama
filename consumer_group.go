@@ -7,6 +7,7 @@ import (
 	"sort"
 	"sync"
 	"time"
+	"log"
 )
 
 // ErrClosedConsumerGroup is the error returned when a method is called on a consumer group that has been closed.
@@ -72,13 +73,16 @@ type consumerGroup struct {
 
 // NewConsumerGroup creates a new consumer group the given broker addresses and configuration.
 func NewConsumerGroup(addrs []string, groupID string, config *Config) (ConsumerGroup, error) {
+	log.Debugf("addrs: %+v, groupID: %+v, config: %+v\n", addrs, groupID, config)
 	client, err := NewClient(addrs, config)
 	if err != nil {
+		log.Errorf("NewClient() error: %+v\n", err)
 		return nil, err
 	}
 
 	c, err := newConsumerGroup(groupID, client)
 	if err != nil {
+		log.Errorf("newConsumerGroup() error: %+v, groupID: %+v, client: %+v\n", err, groupID, client)
 		_ = client.Close()
 	}
 	return c, err

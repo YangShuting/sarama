@@ -5,6 +5,7 @@ import (
 	"sort"
 	"sync"
 	"time"
+	"log"
 )
 
 // Client is a generic Kafka client. It manages connections to one or more Kafka brokers.
@@ -136,12 +137,13 @@ type client struct {
 // be retrieved from any of the given broker addresses, the client is not created.
 func NewClient(addrs []string, conf *Config) (Client, error) {
 	Logger.Println("Initializing new client")
-
+	log.Debugf("addrs: %+v, conf: %+v\n", addrs, conf)
 	if conf == nil {
 		conf = NewConfig()
 	}
 
 	if err := conf.Validate(); err != nil {
+		log.Errorf("conf.Validate() error: %+v\n", err)
 		return nil, err
 	}
 
